@@ -9,8 +9,8 @@ const useProfile = create((set, get)=>({
     setValidation: (data) => set({validation: data}),
     data: {},
     setData: (data) => set({data: data}),
-    show: () => {
-        axios.get("http://localhost:8000/api/profile/show", {
+    show: async () => {
+        await axios.get("http://localhost:8000/api/profile/show", {
             headers: {
                 Accept: "application/json",
                 "Content-Type": "application/json",
@@ -20,7 +20,6 @@ const useProfile = create((set, get)=>({
         .then((response)=>{
             get().setProfile(response.data.data)
             get().setValidation(response)
-
             Cookies.set("profile", JSON.stringify(get().profile), {expires: 1})
         })
         .catch((error)=>{

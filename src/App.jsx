@@ -14,10 +14,13 @@ import Verify from "./Pages/Peserta/Verify"
 import useLogin from './Stores/useLogin'
 import Test from './Pages/Admin/Test'
 
+import styles from "./Styles/styles.module.css"
+
 
 
 function App() {
   const user = useLogin(state=>state.user)
+  document.body.classList.add(`${styles.font}`)
   return (
     <BrowserRouter>
       <Routes>

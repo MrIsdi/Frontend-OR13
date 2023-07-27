@@ -4,62 +4,42 @@ import Sidebar from '../../Components/Sidebar'
 import Cookies from 'js-cookie'
 import useProfile from '../../Stores/useProfile'
 import {useNavigate} from "react-router-dom"
+import DragDrop from '../../Components/DragDrop'
+import FileVerify from '../../Components/FileVerify'
 
 function Verify() {
-    const data = JSON.parse(Cookies.get("profile"))
-    const [krs, setKrs] = useState("")
-    const [bukti, setBukti] = useState("")
-    const setValidation = useProfile(state => state.setValidation)
-    const validation = useProfile(state => state.validation)
-    const setData = useProfile(state => state.setData)
-    const storeFile = useProfile(state => state.storeFile)
-    const showFile = useProfile(state => state.showFile)
-    const navigate = useNavigate()
-
-    const startFile = async (e) => {
-        e.preventDefault()
-        const dataFile = new FormData()
-        dataFile.append("krs", krs)
-        dataFile.append("bukti_pembayaran", bukti)
-        setData(dataFile)
-        storeFile()
-        navigate(0)
-    }
-
-    console.log(validation)
+    const dataProfile = JSON.parse(Cookies.get("profile"))
 
     return (
         <div className="container-fluid">
             <div className="row flex-nowrap">
                 <Sidebar />
-                <div className="col py-3 min-vh-100">
+                <div className={`col px-md-5 py-3 min-vh-100 ${styles.content}`}>
+                    <div className="row my-md-3  align-items-center">
+                        <div className="col-6">
+                            <p className="fs-4 fw-bold mb-md-0">Verifikasi</p>
+                        </div>
+                        <div className="col-6 d-flex flex-row-reverse">
+                            {
+                                Object.values(dataProfile).length != 0? <img src={dataProfile["foto"]} className="rounded-circle border  border-dark" alt="" style={{ width: "50px", aspectRatio: "1/1", objectFit: "cover", objectPosition: "top" }} />:
+                                <i className="fw-bold bi bi-person-circle" style={{ fontSize: "40px" }}></i>
+                            }
+                        </div>
+                    </div>
                     {
-                        data["krs"] == null && data["bukti_pembayaran"] == null ? (
-                            <form method="post" encType='multipart/form-data' onSubmit={startFile}>
-                                <div className="mb-3">
-                                    <label htmlFor="krs" className="form-label">Foto KRS</label>
-                                    <input className="form-control" type="file" id="krs" onChange={(e) => {
-                                        setKrs(e.target.files[0])
-                                        console.log(krs)
-                                        }} />
-                                </div>
-                                <div className="mb-3">
-                                    <label htmlFor="bukti" className="form-label">Foto Bukti Pembayaran</label>
-                                    <input className="form-control" type="file" id="bukti" onChange={(e) => setBukti(e.target.files[0])} />
-                                </div>
-                                <div className="mb-3">
-                                    <button type="submit" className="btn btn-primary">Save changes</button>
-                                </div>
-                            </form>
-                        ) : (
-                            <div className="row">
-                                <div className="col-md-6">
-                                    <h3>Foto Kartu Rencana Studi</h3>
-                                    <button className="btn btn-success" onClick={()=>{showFile()}}>Lihat</button>
-                                </div>
-                                <div className="col-md-6"></div>
+                        (dataProfile["krs"] === "http://localhost:8000/storage/krs" && dataProfile["bukti_pembayaran"] === "http://localhost:8000/storage/pembayaran")?
+                        <FileVerify />:
+                        <div className="row mt-5">
+                            <p className="fs-4 fw-bold">Berkas anda</p>
+                            <div className="col-md-5">
+                                <img src={dataProfile["krs"]} className="img-thumbnail" alt="" />
+                                <a href={dataProfile["krs"]} className={`w-50 mx-auto text-white btn d-flex align-items-center justify-content-center ${styles.profileBtn}`} target="_blank" download> Download</a>
                             </div>
-                        )
+                            <div className="col-md-5">
+                                <img src={dataProfile["bukti_pembayaran"]} className="img-thumbnail" alt="" />
+                                <a href={dataProfile["bukti_pembayaran"]} className={`w-50 mx-auto text-white btn d-flex align-items-center justify-content-center ${styles.profileBtn}`} target="_blank" download> Download</a>
+                            </div>
+                        </div>
                     }
                 </div>
             </div>

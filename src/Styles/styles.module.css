@@ -1,3 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+@import url('http://fonts.cdnfonts.com/css/helvetica-neue-9');   
+
+.font{
+    font-family: 'Inter', sans-serif;
+}
+
+.text{
+    font-family: "helvetica neue";
+}
+
 .test{
     position: absolute;
     top: 50%;
@@ -16,4 +27,253 @@
 
 .content{
     overflow: auto;
+}
+
+/* Register */
+.imageReg{
+    width: -webkit-fill-available;
+}
+.registerInput{
+    width: 350px !important;
+    height: 47px;
+}
+.registerInputBtn{
+    width: 350px !important;
+    height: 47px;
+    border-radius: 8px;
+    background: #301D54 !important;
+}
+
+/* Landingpage */
+.nav{
+    container-type: inline-size;
+    container-name: navbar;
+    z-index: 99;
+}
+.navbar{
+    padding: 0 7rem !important;
+}
+.navbarLogo{
+    height: 48px;
+    mix-blend-mode: color-burn;
+}
+.navbarUl{
+    gap: 4rem;
+}
+.navbarScroll{
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+}
+.navbarScrollA{
+    color: #301D54 !important;
+}
+.navbarA{
+    color: #fff !important;
+}
+@media screen and (max-width: 992px){
+    .nav{
+        backdrop-filter: blur(10px);
+        background: rgba(255, 255, 255, 0.15);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+    }
+    .navbarA{
+        color: #301D54 !important;
+    }
+}
+@container navbar (max-width: 992px){
+    .navbar{
+        padding: 0 12px !important;
+    }
+    .navbarA{
+        color: #301D54 !important;
+    }
+}
+.homeBg{
+    container-type: inline-size;
+    container-name: home;
+    background: linear-gradient(90deg, #ffffff 50%,#301D54 50%);
+}
+@media screen and (max-width: 768px){
+    .homeBg{
+        background: #ffffff;
+    }
+}
+.homeBtn1{
+    background: linear-gradient(90deg, #301D54 0%, #85337F 100%);
+    box-shadow: 0px 4px 50px 15px rgba(213, 141, 187, 0.26);
+    border-radius: 15px !important;
+    width: 189px;
+    height: 61px;
+}
+.homeBtn{
+    gap: 1rem;
+}
+.homeBtn2{
+    border: 2px solid #301D54 !important;
+    border-radius: 15px !important;
+    width: 189px;
+    height: 61px;
+}
+.homeBtnText, .homeBtnText:hover{
+    color: #251548;
+}
+.about{
+    container-type: inline-size;
+    container-name: about;
+}
+.aboutImg{
+    width: 407px;
+    height: 317px;
+    background: #E3E3E3;
+    border-radius: 22px;
+}
+@container about (max-width: 768px){
+    .aboutImg{
+        width: 262px;
+        height: 170px;
+        border-radius: 6px;
+    }
+}
+.division{
+    background: #301D54;
+    container-type: inline-size;
+    container-name: division;
+}
+.divisionTitle{
+    color: #D58DBB;
+    font-weight: 700;
+}
+.divisionName{
+    color: #FFFFFF;
+    font-weight: 700;
+}
+.divisionLogo{
+    width: 101px;
+    height: 101px;
+    background: #BBBBBB;
+    border-radius: 50%;
+}
+.subdivisionFill{
+    text-align: justify;
+}
+.divisionSlide{
+    min-height: 50vh;
+}
+@container division (max-width: 768px){
+    .divisionLogo{
+        width: 50px;
+        height: 50px;
+    }
+    .divisionSlide{
+        min-height: 100vh;
+        overflow-y: auto;
+    }
+}
+.project{
+    container-type: inline-size;
+    container-name: project;
+}
+.projectContainer{
+    height: 100vh;;
+}
+.projectTitle{
+    color: #301D54;
+    font-weight: 700;
+}
+.projectBox{
+    width: 320px;
+    height: 258px;
+    background: #D9D9D9;
+}
+@container project (max-width: 768px){
+    .projectContainer{
+        height: fit-content !important;
+    }
+}
+.achieve{
+    container-type: inline-size;
+    container-name: achieve;
+}
+.achieveContainer{
+    height: 100vh;
+}
+.achieveBox{
+    display: flex;
+    width: 496px;
+    height: 94px;
+    background: #F9F4FF;
+    border-radius: 15px;
+    text-wrap: nowrap;
+}
+.achieveLogo{
+    width: 100px;
+    height: 94px;
+    background: #301D54;
+    border-radius: 15px 0px 0px 15px;
+    font-size: xxx-large;
+    color: #D58DBB;
+    display: grid;
+    place-items: center;
+}
+@container achieve (max-width: 768px){
+    .achieveContainer{
+        height: fit-content !important;
+    }
+}
+.persuade{
+    background: #F8CBDF;
+}
+.persuadeTitle{
+    color: #301D54;
+    font-weight: 700;
+    text-align: center;
+}
+.persuadeBtn{
+    width: 231px !important;
+    height: 61px;
+    background: #301D54 !important;
+    border-radius: 15px !important;
+}
+.footer{
+    background: #301D54;
+}
+.footerLogo{
+    width: 87px;
+    height: 87px;
+    background: #6C6C6C;
+    border-radius: 50%;
+}
+.footerSosmeds{
+    display: flex;
+    gap: 1rem;
+}
+.footerSosmed{
+    width: 40px;
+    height: 40px;
+    background: #B3B3B3;
+    border-radius: 50%;
+    margin-bottom: 2rem;
+}
+
+/* Dashboard */
+
+.bgDashboard{
+    background: #301D54 !important;
+}
+.sidebarLi:hover, .sidebarLiActive{
+    border-right: 5px solid #D58DBB;
+}
+.sidebarUser{
+    background: #FBFBFB;
+    aspect-ratio: 2/1;
+}
+.dashboardContact{
+    background: #FBFBFB;
+}
+.profileBtn{
+    width: fit-content;
+    height: 47px;
+    border-radius: 8px;
+    background: #301D54 !important;
 }

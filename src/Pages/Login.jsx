@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import styles from "../Styles/styles.module.css"
+import bg from "../assets/bg.png"
 import { useNavigate } from 'react-router-dom'
 import useLogin from "../Stores/useLogin"
 import useProfile from '../Stores/useProfile'
@@ -27,9 +28,8 @@ function Login() {
         if(validation != {}){
             if(validation.status === 200){
                 if(validation.data.user.role === "peserta"){
-                    show()
-                    Cookies.set("profile", "", {expires: 1})
                     navigate("/peserta")
+                    Cookies.set("profile", JSON.stringify({}), {expires: 1})
                 }else{
                     navigate("/admin")
                 }
@@ -40,23 +40,30 @@ function Login() {
     }, [validation])
     
     return (
-        <div className="container">
+        <div className="container-fluid">
             <div className="row justify-content-center align-items-center vh-100">
-                <div className="col-md-5">
-                    <h3 className='mb-4'>Login</h3>
-                    <form method='post' onSubmit={startLogin}>
-                        <div className="mb-3">
+                <div className="col-md-4 offset-md-1">
+                    <h2 className='mb-4 fw-bold'>Login</h2>
+                    <form method='post' onSubmit={startLogin} className={`${styles.text}`}>
+                        <div className="mb-4">
                             <label htmlFor="email" className="form-label fw-bold">Email</label>
-                            <input type="email" className={`form-control`} id="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
+                            <input type="email" className={`${styles.registerInput} form-control`} id="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
                         </div>
-                        <div className="mb-3">
+                        <div className="mb-4">
                             <label htmlFor="password" className="form-label fw-bold">Password</label>
-                            <input type="password" className={`form-control`} id="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+                            <input type="password" className={`${styles.registerInput} form-control`} id="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
                         </div>
-                        <div className="mb-3">
-                            <button className="btn btn-dark w-100" type='submit'>Login</button>
+                        <div className="mb-4">
+                            <button className={`text-white btn ${styles.registerInputBtn}`} type='submit'>Login</button>
                         </div>
                     </form>
+                    <p className={`d-block fs-6 text-mute text-center ${styles.registerInput}`}>
+                        Belum memiliki akun?
+                        <a href="/register" className="text-dark fw-bold text-decoration-none"> Daftar</a>
+                    </p>
+                </div>
+                <div className="col-md-6 offset-md-1">
+                    <img className={styles.imageReg} src={bg} alt="" />
                 </div>
             </div>
         </div>

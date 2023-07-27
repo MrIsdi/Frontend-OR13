@@ -13,8 +13,8 @@ const useLogin = create((set, get)=>({
     setValidation: (data) => set({validation: data}),
     handleLogin: () => {
         const data = get().user
-        // axios.post("http://localhost:8000/api/login", data)
-        axios.post("https://or-api.neotelemetri.com/api/login", data)
+        axios.post("http://localhost:8000/api/login", data)
+        // axios.post("https://or-api.neotelemetri.com/api/login", data)
         .then((response)=>{
             get().setUser(response.data.user)
             get().setToken(response.data.token)
@@ -29,15 +29,31 @@ const useLogin = create((set, get)=>({
     },
     handleLogout: async () =>{
         axios.defaults.headers.common['Authorization'] = `Bearer ${Cookies.get("token")}`
-        // await axios.post('http://localhost:8000/api/logout')
-        await axios.post('https://or-api.neotelemetri.com/api/logout')
+        await axios.post('http://localhost:8000/api/logout')
+        // await axios.post('https://or-api.neotelemetri.com/api/logout')
         .then((response) => {
             get().setIsLogout(response)
-
-            Cookies.remove("token")
-            Cookies.remove("user")
-            Cookies.remove("profile")
         });
+    },
+    password: {},
+    setPassword: (data) => set({ password: data }),
+    isPassword: "",
+    setIsPassword: (data) => set({ isPassword: data }),
+    handlePassword: () =>{
+        const data = get().password
+        axios.post(`http://localhost:8000/api/password`, data, {
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${Cookies.get("token")}`
+            }
+        })
+        .then((response)=>{
+            get().setIsPassword(response)
+        })
+        .catch((error) =>{
+            get().setIsPassword(error)
+        } )
     }
 }))
 
