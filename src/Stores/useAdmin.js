@@ -46,6 +46,15 @@ const useAdmin = create((set, get)=>({
     colorButton: "#black",
     setColorButton: (data) => set({colorButton: data}),
 
+    currentPage: 1,
+    setCurrentPage: (data) => set({colorButton: data}),
+
+    search: "",
+    setSearch: (data) => set({search: data}),
+
+    message: "",
+    setMessage: (data) => set({message: data}),
+
     showAllMember: () => {
         if (get().fetchStatus) {
             // console.log(Cookies.get('token'))
@@ -61,12 +70,64 @@ const useAdmin = create((set, get)=>({
                 console.log(res.data.data)
                 get().setLoading(false)
                 get().setData(res.data.data)
+                // get().currentPage
             })
             .catch((err) => {
                 console.log(err)
                 get().setValidation(err.response)
             })
         }
+    },
+
+    handlePageChange: (page) => {
+        get().setCurrentPage(page)
+    },
+
+    handleSearchChange : (event) => {
+        get().setSearch(event.target.value)
+
+        // console.log(search)
+    },
+
+    handleSearch : (event) => {
+        event.preventDefault()
+
+        // console.log(search)
+
+        let fetchData = async () => {
+            get().setLoading(true)
+
+            let { data } = await axios.get("https://or-api.neotelemetri.com/api/admin/show_all",
+            {
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json", 
+                    Authorization: `Bearer ${Cookies.get('token')}`,
+                    "role": "admin"
+                }
+            })
+            let dataList = data.data
+
+            // console.log(dataList)
+
+            let searchData = dataList.filter((res) => {
+                return Object.values(res).join(" ").toLowerCase().includes(get().search.toLowerCase())
+            })
+
+            // console.log(searchData)
+
+            get().setLoading(false)
+            
+            get().setData([...searchData])
+
+            if (searchData.length === 0) {
+                get().setMessage("No data")
+            }
+
+        }
+        
+        fetchData()
+        get().setMessage("")
     },
 
     handleMemberDetail : (e) => {
@@ -96,7 +157,7 @@ const useAdmin = create((set, get)=>({
                 }
             })
             .then((res) => {
-                console.log(res.data.data)
+                // console.log(res.data.data)
                 get().setLoading(false)
                 get().setMemberDetail(res.data.data)
             })
@@ -127,7 +188,9 @@ const useAdmin = create((set, get)=>({
                 })
                 .then((result) => {
                     if (result.isConfirmed) {
-                        let status = !user.validation_status ? 1 : 0
+                        let validation_statusInt = parseInt(user.validation_status)
+
+                        let status = !validation_statusInt ? 1 : 0
                         
                         get().setValidationStatus(status)
     
@@ -191,7 +254,9 @@ const useAdmin = create((set, get)=>({
                 })
                 .then((result) => {
                     if (result.isConfirmed) {
-                        let status = !user.status_aktif ? 1 : 0
+                        let status_aktifInt = parseInt(user.status_aktif)
+
+                        let status = !status_aktifInt ? 1 : 0
                         
                         get().setMemberStatus(status)
     
@@ -240,21 +305,21 @@ const useAdmin = create((set, get)=>({
     handleKrsFile: (event) => {
         const krsFile = get().data.map((user, index) => {
             if (user.id === parseInt(event.target.value)) {
-                fetch(`https://or-api.neotelemetri.com/api/profile/show_file/${user.krs}`, {
+                let krsURL = user.krs.substring(user.krs.lastIndexOf('/') + 1)
+
+                axios.get(`https://or-api.neotelemetri.com/api/profile/show_file/${krsURL}`, {
                     headers: {
                         Accept: "application/json",
                         "Content-Type": "application/json", 
                         Authorization: `Bearer ${Cookies.get('token')}`,
                         "role": "admin"
-                    }
+                    },
+                    responseType: "blob",
                 })
                 .then((res) => {
-                    // console.log(res.url)
-                    return res.blob()
-                })
-                .then((blob) => {
-                    const imgURL = URL.createObjectURL(blob)
-                    get().setImageFile(imgURL)
+                    const imgURL = URL.createObjectURL(new Blob([res.data], { type: "image/jpeg" }));
+                    // console.log(res)
+                    get().setImageFile(imgURL);
                     window.open(get().imageFile);
                 })
                 .catch((err) => {
@@ -270,21 +335,22 @@ const useAdmin = create((set, get)=>({
     handleInvoiceFile: (event) => {
         const invoiceFile = get().data.map((user, index) => {
             if (user.id === parseInt(event.target.value)) {
-                fetch(`https://or-api.neotelemetri.com/api/profile/show_file/${user.bukti_pembayaran}`, {
+                let invoiceURL = user.bukti_pembayaran.substring(user.bukti_pembayaran.lastIndexOf('/') + 1)
+
+                axios.get(`https://or-api.neotelemetri.com/api/profile/show_file/${invoiceURL}`, {
                     headers: {
                         Accept: "application/json",
                         "Content-Type": "application/json", 
                         Authorization: `Bearer ${Cookies.get('token')}`,
                         "role": "admin"
-                    }
+                    },
+                    responseType: "blob",
                 })
                 .then((res) => {
-                    // console.log(res.url)
-                    return res.blob()
-                })
-                .then((blob) => {
-                    const imgURL = URL.createObjectURL(blob)
-                    get().setImageFile(imgURL)
+                    const blob = new Blob([res.data], { type: 'image/jpeg' }); 
+                    const imgURL = URL.createObjectURL(blob);
+                    // console.log(res)
+                    get().setImageFile(imgURL);
                     window.open(get().imageFile);
                 })
                 .catch((err) => {
@@ -296,49 +362,6 @@ const useAdmin = create((set, get)=>({
         })
         get().setImageFile("")
     },
-
-    //BENERIN BUG pas awal masuk/refresh malah ga muncul fotonya/salah foto (foto org sebelumnya)
-    showUserImage: (event) => {
-        if (get().fetchStatus && event !== undefined) {
-            fetch(`https://or-api.neotelemetri.com/api/profile/show_file/${event}`, {
-                headers: {
-                    Accept: "application/json",
-                    "Content-Type": "application/json", 
-                    Authorization: `Bearer ${Cookies.get('token')}`,
-                    "role": "admin"
-                }
-            })
-            .then((res) => {
-                return res.blob()
-            })
-            .then((blob) => {
-                const imgURL = URL.createObjectURL(blob)
-                get().setUserImageFile(imgURL)
-            })
-            .catch((err) => {
-                console.log(err)
-                get().setValidation(err.response)
-            })
-        } else {
-            get().setUserImageFile("https://th.bing.com/th/id/OIP.Ghae4OEdb4UmC3hkqpFvLAHaGd?pid=ImgDet&rs=1")
-        }
-    },
-
-    colorButtonFunction: (params) => {
-        if (params) {
-            get().setBackgroundColorButton("#301D54")
-            get().setColorButton("#ffffff")
-
-            return "Aktif"
-        } else 
-        {
-            get().setBackgroundColorButton("#ffffff")
-            get().setColorButton("#black")
-
-            return "Tidak Aktif"
-        }
-    }
-
 }))
 
 export default useAdmin

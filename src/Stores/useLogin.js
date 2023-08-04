@@ -13,8 +13,8 @@ const useLogin = create((set, get)=>({
     setValidation: (data) => set({validation: data}),
     handleLogin: () => {
         const data = get().user
-        axios.post("http://localhost:8000/api/login", data)
-        // axios.post("https://or-api.neotelemetri.com/api/login", data)
+        // axios.post("http://localhost:8000/api/login", data)
+        axios.post("https://or-api.neotelemetri.com/api/login", data)
         .then((response)=>{
             get().setUser(response.data.user)
             get().setToken(response.data.token)

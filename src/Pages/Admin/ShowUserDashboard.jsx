@@ -19,7 +19,7 @@ const showUserDashboard = () => {
 
     useEffect(() => {
         showUser(userId)
-        showUserImage(memberDetail.foto);
+        // showUserImage(memberDetail.foto);
         
         setFetchStatus(true)
     }, [fetchStatus, setFetchStatus])
@@ -29,9 +29,9 @@ const showUserDashboard = () => {
             <div className="row flex-nowrap">
                 <Sidebar />
                 <div className="col-8 m-4 min-vh-100">
-                    <div className="fw-bold fs-3">{memberDetail.nama_lengkap}</div>
+                    <div className="fw-bold fs-3">{memberDetail.nama_lengkap !== undefined ? memberDetail.nama_lengkap : "loading..."}</div>
                     <div className="hstack gap-5 my-5">
-                        <img src={userImageFile} width="200px" />
+                        <img src={memberDetail.foto != undefined ? memberDetail.foto : "https://th.bing.com/th/id/OIP.Ghae4OEdb4UmC3hkqpFvLAHaGd?pid=ImgDet&rs=1"} width="200px" />
                     </div>
                     <div className='row flex'>
                         <form className='col'>
@@ -45,7 +45,7 @@ const showUserDashboard = () => {
                                         id="disabledTextInput"
                                         className="form-control"
                                         placeholder="Disabled input"
-                                        value={isNaN(memberDetail.nama_lengkap) ? String(memberDetail.nama_lengkap) : memberDetail.nama_lengkap}
+                                        value={memberDetail.nama_lengkap !== undefined ? String(memberDetail.nama_lengkap) : "loading..."}
                                         disabled
                                     />
                                 </div>
@@ -58,7 +58,7 @@ const showUserDashboard = () => {
                                         id="disabledTextInput"
                                         className="form-control"
                                         placeholder="Disabled input"
-                                        value={isNaN(memberDetail.nim) ? String(memberDetail.nim) : memberDetail.nim}
+                                        value={memberDetail.nim !== undefined? String(memberDetail.nim) : "loading..."}
                                         disabled
                                     />
                                 </div>
@@ -71,7 +71,7 @@ const showUserDashboard = () => {
                                         id="disabledTextInput"
                                         className="form-control"
                                         placeholder="Disabled input"
-                                        value={isNaN(memberDetail.jenis_kelamin) ? String(memberDetail.jenis_kelamin) : memberDetail.jenis_kelamin}
+                                        value={memberDetail.jenis_kelamin !== undefined ? String(memberDetail.jenis_kelamin) : "loading..."}
                                         disabled
                                     />
                                 </div>
@@ -84,7 +84,7 @@ const showUserDashboard = () => {
                                         id="disabledTextInput"
                                         className="form-control"
                                         placeholder="Disabled input"
-                                        value={isNaN(memberDetail.agama) ? String(memberDetail.agama) : memberDetail.agama}
+                                        value={memberDetail.agama !== undefined ? String(memberDetail.agama) : "loading..."}
                                         disabled
                                     />
                                 </div>
@@ -97,7 +97,7 @@ const showUserDashboard = () => {
                                         id="disabledTextInput"
                                         className="form-control"
                                         placeholder="Disabled input"
-                                        value={isNaN(memberDetail.tempat_lahir) ? String(memberDetail.tempat_lahir) : memberDetail.tempat_lahir}
+                                        value={memberDetail.tempat_lahir !== undefined ? String(memberDetail.tempat_lahir) : "loading..."}
                                         disabled
                                     />
                                 </div>
@@ -110,7 +110,7 @@ const showUserDashboard = () => {
                                         id="disabledTextInput"
                                         className="form-control"
                                         placeholder="Disabled input"
-                                        value={isNaN(memberDetail.tanggal_lahir) ? String(memberDetail.tanggal_lahir) : memberDetail.tanggal_lahir}
+                                        value={memberDetail.tanggal_lahir !== undefined ? String(memberDetail.tanggal_lahir) : "loading..."}
                                         disabled
                                     />
                                 </div>
@@ -123,10 +123,14 @@ const showUserDashboard = () => {
                                         id="disabledTextInput"
                                         className="form-control"
                                         placeholder="Disabled input"
-                                        value={isNaN(memberDetail.asal) ? String(memberDetail.asal) : memberDetail.asal}
+                                        value={memberDetail.asal !== undefined ? String(memberDetail.asal) : "loading..."}
                                         disabled
                                     />
                                 </div>
+                            </fieldset>
+                        </form>
+                        <form className='col'>
+                            <fieldset disabled="">  
                                 <div className="mb-3 w-100">
                                     <label htmlFor="disabledTextInput" className="form-label fw-semibold">
                                         Alamat
@@ -136,40 +140,10 @@ const showUserDashboard = () => {
                                         id="disabledTextInput"
                                         className="form-control"
                                         placeholder="Disabled input"
-                                        value={isNaN(memberDetail.alamat) ? String(memberDetail.alamat) : memberDetail.alamat}
+                                        value={memberDetail.alamat !== undefined ? String(memberDetail.alamat) : "loading..."}
                                         disabled
                                     />
-                                </div>
-                                <div className="mb-3 w-100">
-                                    <label htmlFor="disabledTextInput" className="form-label fw-semibold">
-                                        Hobi
-                                    </label>
-                                    <input
-                                        type="text"
-                                        id="disabledTextInput"
-                                        className="form-control"
-                                        placeholder="Disabled input"
-                                        value={isNaN(memberDetail.hobi) ? String(memberDetail.hobi) : memberDetail.hobi}
-                                        disabled
-                                    />
-                                </div>
-                                <div className="mb-3 w-100">
-                                    <label htmlFor="disabledTextInput" className="form-label fw-semibold">
-                                        Cita-cita
-                                    </label>
-                                    <input
-                                        type="text"
-                                        id="disabledTextInput"
-                                        className="form-control"
-                                        placeholder="Disabled input"
-                                        value={isNaN(memberDetail.cita_cita) ? String(memberDetail.cita_cita) : memberDetail.cita_cita}
-                                        disabled
-                                    />
-                                </div>
-                            </fieldset>
-                        </form>
-                        <form className='col'>
-                            <fieldset disabled="">   
+                                </div> 
                                 <div className="mb-3 w-100">
                                     <label htmlFor="disabledTextInput" className="form-label fw-semibold">
                                         Nomor HP
@@ -179,7 +153,7 @@ const showUserDashboard = () => {
                                         id="disabledTextInput"
                                         className="form-control"
                                         placeholder="Disabled input"
-                                        value={isNaN(memberDetail.no_hp) ? String(memberDetail.no_hp) : memberDetail.no_hp}
+                                        value={memberDetail.no_hp !== undefined ? String(memberDetail.no_hp) : "loading..."}
                                         disabled
                                     />
                                 </div>
@@ -192,7 +166,7 @@ const showUserDashboard = () => {
                                         id="disabledTextInput"
                                         className="form-control"
                                         placeholder="Disabled input"
-                                        value={isNaN(memberDetail.jurusan) ? String(memberDetail.jurusan) : memberDetail.jurusan}
+                                        value={memberDetail.jurusan !== undefined ? String(memberDetail.jurusan) : "loading..."}
                                         disabled
                                     />
                                 </div>
@@ -205,7 +179,7 @@ const showUserDashboard = () => {
                                         id="disabledTextInput"
                                         className="form-control"
                                         placeholder="Disabled input"
-                                        value={isNaN(memberDetail.fakultas) ? String(memberDetail.fakultas) : memberDetail.fakultas}
+                                        value={memberDetail.fakultas !== undefined ? String(memberDetail.fakultas) : "loading..."}
                                         disabled
                                     />
                                 </div>
@@ -218,7 +192,7 @@ const showUserDashboard = () => {
                                         id="disabledTextInput"
                                         className="form-control"
                                         placeholder="Disabled input"
-                                        value={isNaN(memberDetail.divisi) ? String(memberDetail.divisi) : memberDetail.divisi}
+                                        value={memberDetail.divisi !== undefined ? String(memberDetail.divisi) : "loading..."}
                                         disabled
                                     />
                                 </div>
@@ -231,72 +205,7 @@ const showUserDashboard = () => {
                                         id="disabledTextInput"
                                         className="form-control"
                                         placeholder="Disabled input"
-                                        value={isNaN(memberDetail.sub_divisi) ? String(memberDetail.sub_divisi) : memberDetail.sub_divisi}
-                                        disabled
-                                    />
-                                </div>
-                                <div className="mb-3 w-100">
-                                    <label htmlFor="disabledTextInput" className="form-label fw-semibold">
-                                        Riwayat Penyakit
-                                    </label>
-                                    <input
-                                        type="text"
-                                        id="disabledTextInput"
-                                        className="form-control"
-                                        placeholder="Disabled input"
-                                        value={isNaN(memberDetail.riwayat_penyakit) ? String(memberDetail.riwayat_penyakit) : memberDetail.riwayat_penyakit}
-                                        disabled
-                                    />
-                                </div>
-                                <div className="mb-3 w-100">
-                                    <label htmlFor="disabledTextInput" className="form-label fw-semibold">
-                                        Laptop
-                                    </label>
-                                    <input
-                                        type="text"
-                                        id="disabledTextInput"
-                                        className="form-control"
-                                        placeholder="Disabled input"
-                                        value={isNaN(memberDetail.laptop) ? String(memberDetail.laptop) : memberDetail.laptop}
-                                        disabled
-                                    />
-                                </div>
-                                <div className="mb-3 w-100">
-                                    <label htmlFor="disabledTextInput" className="form-label fw-semibold">
-                                        RAM
-                                    </label>
-                                    <input
-                                        type="text"
-                                        id="disabledTextInput"
-                                        className="form-control"
-                                        placeholder="Disabled input"
-                                        value={isNaN(memberDetail.RAM) ? String(memberDetail.RAM) : memberDetail.RAM}
-                                        disabled
-                                    />
-                                </div>
-                                <div className="mb-3 w-100">
-                                    <label htmlFor="disabledTextInput" className="form-label fw-semibold">
-                                        Processor
-                                    </label>
-                                    <input
-                                        type="text"
-                                        id="disabledTextInput"
-                                        className="form-control"
-                                        placeholder="Disabled input"
-                                        value={isNaN(memberDetail.processor) ? String(memberDetail.processor) : memberDetail.processor}
-                                        disabled
-                                    />
-                                </div>
-                                <div className="mb-3 w-100">
-                                    <label htmlFor="disabledTextInput" className="form-label fw-semibold">
-                                        VGA
-                                    </label>
-                                    <input
-                                        type="text"
-                                        id="disabledTextInput"
-                                        className="form-control"
-                                        placeholder="Disabled input"
-                                        value={isNaN(memberDetail.VGA) ? String(memberDetail.VGA) : memberDetail.VGA}
+                                        value={memberDetail.sub_divisi !== undefined ? String(memberDetail.sub_divisi) : "loading..."}
                                         disabled
                                     />
                                 </div>
