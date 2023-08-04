@@ -228,7 +228,7 @@ function AdminDashboard() {
                             }
                         </tbody>
                     </table>
-                    <nav aria-label="Page navigation example">
+                    {/* <nav aria-label="Page navigation example">
                         <ul className="pagination">
                             <li className="page-item">
                             <a className="page-link" href="#" aria-label="Previous">
@@ -256,7 +256,7 @@ function AdminDashboard() {
                             </a>
                             </li>
                         </ul>
-                    </nav>
+                    </nav> */}
                 </div>
             </div>
         </div>
