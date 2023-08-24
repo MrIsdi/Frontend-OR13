@@ -277,3 +277,14 @@
     border-radius: 8px;
     background: #301D54 !important;
 }
+
+/* Coming Soon */
+.circle1 {
+    filter: blur(30px);
+}
+
+@media (max-width: 768px) {
+    .circleVisible {
+        display: none;
+    }
+}

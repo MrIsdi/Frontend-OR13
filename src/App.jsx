@@ -15,6 +15,7 @@ import useLogin from './Stores/useLogin'
 import Test from './Pages/Admin/Test'
 
 import styles from "./Styles/styles.module.css"
+import { ComingSoon } from './Components/ComingSoon'
 
 
 
@@ -26,6 +27,7 @@ function App() {
       <Routes>
         <Route path="*" element={ <PageNotFound /> } />
         <Route path="/" element={ <Landingpage /> } />
+        <Route path="/comingsoon" element={ <ComingSoon /> } />
         <Route path="/login" element={ <Login /> } />
         <Route path="/register" element={ <Register /> } />
         <Route path="/admin" element={ <AdminDashboard /> } />
