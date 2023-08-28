@@ -28,8 +28,10 @@ function Login() {
         if(validation != {}){
             if(validation.status === 200){
                 if(validation.data.user.role === "peserta"){
-                    navigate("/peserta")
-                    Cookies.set("profile", JSON.stringify({}), {expires: 1})
+                    show()
+                    setTimeout(()=>{
+                        navigate("/peserta")
+                    }, 1000)
                 }else{
                     navigate("/admin")
                 }
@@ -62,7 +64,7 @@ function Login() {
                         <a href="/register" className="text-dark fw-bold text-decoration-none"> Daftar</a>
                     </p>
                 </div>
-                <div className="col-md-6 offset-md-1">
+                <div className="col-md-6 offset-md-1 d-md-block d-none">
                     <img className={styles.imageReg} src={bg} alt="" />
                 </div>
             </div>

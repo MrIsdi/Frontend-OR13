@@ -23,7 +23,9 @@ function Profile() {
         formData.append("confirm_password", password_confirmation)
         setPw(formData)
         handlePassword()
-        navigate(0)
+        setTimeout(()=>{
+            navigate("/peserta")
+        }, 1000)
     }
 
     const DataProfile = () => {

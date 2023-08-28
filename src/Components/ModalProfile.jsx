@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import styles from "../Styles/styles.module.css"
 import useProfile from '../Stores/useProfile'
-import { useNavigate, useHref } from 'react-router-dom'
+import { useNavigate, redirect } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import 'sweetalert2/dist/sweetalert2.min.css';
 
@@ -28,17 +28,21 @@ function ModalProfile() {
     const show = useProfile(state => state.show)
 
     const navigate = useNavigate()
+    let idFoto
 
     useEffect(()=>{
+        idFoto = document.getElementById("Foto")
         if(validation != {}){
             if(validation.status === 200){
                 show()
-                navigate(0)
+                setTimeout(()=>{
+                    navigate("/peserta")
+                },1000)
             }else if(validation.status === 401){
                 console.log(validation)
             }
         }
-    }, [validation, foto])
+    }, [validation, foto, idFoto])
 
     const startProfile = async (e) => {
         e.preventDefault()
@@ -68,7 +72,24 @@ function ModalProfile() {
         "SKJ": ["Sistem Komputer", "Jaringan"]
     }
 
-    const idFoto = document.getElementById("Foto")
+    const optionJurusan = {
+        "Pertanian": ["Agribisnis", "Agroteknologi", "Proteksi Tanaman", "Penyuluhan Pertanian", "Ilmu Tanah"],
+        "Kedokteran": ["Kedokteran", "Kebidanan", "Psikologi", "Ilmu Biomedis"],
+        "Hukum": ["Hukum"],
+        "MIPA": ["Matematika dan Sains Data", "Biologi", "Kimia", "Fisika"],
+        "Ekonomi dan Bisnis": ["Pemasaran", "Keuangan", "Akutansi", "Kesekretariatan", "Ekonomi", "Manajemen", "Akutansi", "Ekonomi Islam"],
+        "Peternakan": ["Peternakan"],
+        "Ilmu Budaya": ["Sastra Indonesia", "Sastra Inggris", "Sastra Jepang", "Sastra Minangkabau", "Sejarah"],
+        "ISIP": ["Sosiologi", "Antropologi", "Ilmu Politik", "Hubungan Internasional", "Ilmu Komunikasi", "Administrasi Publik"],
+        "Teknik": ["Teknik Mesin", "Teknik Elektro", "Teknik Industri", "Teknik Sipil", "Teknik Lingkungan", "Arsitektur"],
+        "Farmasi": ["Farmasi"],
+        "Teknologi Pertanian": ["Teknik Pertanian dan Biosistem", "Teknologi Hasil Pertanian", "Teknologi Industri Pertanian"],
+        "Keperawatan": ["Keperawatan"],
+        "Kesehatan Masyarakat": ["Kesehatan Masyarakat", "Gizi"],
+        "Teknologi Informasi": ["Teknik Komputer", "Sistem Informasi", "Informatika"],
+        "Kedokteran Gigi": ["Kedokteran Gigi"]
+    }
+
     
     return (
         <form method="post" onSubmit={startProfile} encType='multipart/form-data'>
@@ -127,13 +148,37 @@ function ModalProfile() {
                 <div className="col-md-3">
                     <div className="mb-3">
                         <label htmlFor="fakultas" className="form-label fw-bold">Fakultas</label>
-                        <input type="text" className="form-control" id='fakultas' value={fakultas} onChange={(e)=>setFakultas(e.target.value)}/>
+                        <select id="fakultas" className='form-select' value={fakultas} onChange={(e)=>setFakultas(e.target.value)}>
+                            <option></option>
+                            <option value="Pertanian">Pertanian</option>
+                            <option value="Kedokteran">Kedokteran</option>
+                            <option value="Hukum">Hukum</option>
+                            <option value="MIPA">MIPA</option>
+                            <option value="Ekonomi dan Bisnis">Ekonomi dan Bisnis</option>
+                            <option value="Peternakan">Peternakan</option>
+                            <option value="Ilmu Budaya">Ilmu Budaya</option>
+                            <option value="ISIP">ISIP</option>
+                            <option value="Teknik">Teknik</option>
+                            <option value="Farmasi">Farmasi</option>
+                            <option value="Teknologi Pertanian">Teknologi Pertanian</option>
+                            <option value="Keperawatan">Keperawatan</option>
+                            <option value="Kesehatan Masyarakat">Kesehatan Masyarakat</option>
+                            <option value="Teknologi Informasi">Teknologi Informasi</option>
+                            <option value="Kedokteran Gigi">Kedokteran Gigi</option>
+                        </select>
                     </div>
                 </div>
                 <div className="col-md-3">
                     <div className="mb-3">
                         <label htmlFor="jurusan" className="form-label fw-bold">Jurusan</label>
-                        <input type="text" className="form-control" id='jurusan' value={jurusan} onChange={(e)=>setJurusan(e.target.value)}/>
+                        <select id="jurusan" className='form-select' value={jurusan} onChange={(e)=>setJurusan(e.target.value)}>
+                            <option></option>
+                            {   fakultas == "" ? "" :
+                                optionJurusan[`${fakultas}`].map((data, i)=>(
+                                    <option value={data} key={i}>{data}</option>
+                                ))
+                            }
+                        </select>
                     </div>
                 </div>
             </div>

@@ -1,18 +1,23 @@
+import { useEffect } from "react";
 import styles from "../styles/styles.module.css"
+import logo from "../assets/logo.png"
+import AOS from "aos";
+import "aos/dist/aos.css";
 function About() {
+    useEffect(()=>{
+        AOS.init();
+    },[])
     return (
         <main className={`container-fluid ${styles.about}`}>
             <div className="container">
                 <div className="row vh-100 align-items-center">
-                    <div className="col-md-6">
-                        <div className={`mx-auto ${styles.aboutImg}`}>
-
-                        </div>
+                    <div className="col-md-6" data-aos="fade-down-right">
+                        <img src={logo} alt="" className="fluid" style={{ width: "inherit" }}/>
                     </div>
-                    <div className="col-md-6">
+                    <div className="col-md-6" data-aos="fade-down-left">
                         <p className="fs-2 fw-bold">Apa itu OR Neotelemetri?</p>
-                        <p className="fs-6">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eu massa arcu. Aliquam a odio sodales, iaculis neque eget, commodo tellus. Fusce varius commodo lorem, vitae vulputate mi ullamcorper in. Donec viverra neque tempor turpis molestie malesuada. Nam dapibus sapien ac ligula consectetur ultrices. Vestibulum ut ante elementum dolor molestie vestibulum. 
+                        <p className="fs-6" style={{ textAlign: "justify" }}>
+                            Open Recruitment atau OR Adalah Proses Penerimaan calon anggota baru UKM Neo Telemetri. OR dilakukan setiap satu kali kepengurusan UKM dengan tujuan Mendapatkan anggota baru yang sesuai dengan standar kompetensi dan kebutuhan UKM Neo Telemetri, serta sebagai bentuk regenerasi keanggotaan UKM Neo Telemetri.
                         </p>
                     </div>
                 </div>

@@ -1,6 +1,8 @@
 import axios from "axios"
 import {create} from "zustand"
 import Cookies from 'js-cookie';
+import Swal from 'sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css';
 
 const useLogin = create((set, get)=>({
     user: {},
@@ -22,6 +24,13 @@ const useLogin = create((set, get)=>({
 
             Cookies.set('token', get().token, {expires : 1})
             Cookies.set('user', JSON.stringify(get().user), {expires : 1})
+            Swal.fire({
+                title: "Success",
+                text: "Anda berhasil Log In",
+                icon: "success",
+                timer: 1000,
+                showConfirmButton: false
+            })
         })
         .catch((error)=>{
             get().setValidation(error.response)
@@ -29,8 +38,8 @@ const useLogin = create((set, get)=>({
     },
     handleLogout: async () =>{
         axios.defaults.headers.common['Authorization'] = `Bearer ${Cookies.get("token")}`
-        await axios.post('http://localhost:8000/api/logout')
-        // await axios.post('https://or-api.neotelemetri.com/api/logout')
+        // await axios.post('http://localhost:8000/api/logout')
+        await axios.post('https://or-api.neotelemetri.com/api/logout')
         .then((response) => {
             get().setIsLogout(response)
         });
@@ -41,7 +50,7 @@ const useLogin = create((set, get)=>({
     setIsPassword: (data) => set({ isPassword: data }),
     handlePassword: () =>{
         const data = get().password
-        axios.post(`http://localhost:8000/api/password`, data, {
+        axios.post(`https://or-api.neotelemetri.com/api/password`, data, {
             headers: {
                 Accept: "application/json",
                 "Content-Type": "application/json",
@@ -50,6 +59,13 @@ const useLogin = create((set, get)=>({
         })
         .then((response)=>{
             get().setIsPassword(response)
+            Swal.fire({
+                title: "Success",
+                text: "Anda berhasil ganti password",
+                icon: "success",
+                timer: 1000,
+                showConfirmButton: false
+            })
         })
         .catch((error) =>{
             get().setIsPassword(error)

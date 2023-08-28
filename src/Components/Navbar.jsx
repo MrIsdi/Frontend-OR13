@@ -11,14 +11,14 @@ function Navbar() {
                 setScroll1(styles.navbarScrollA)
             }else{
                 setScroll("")
-                setScroll1("")
+                setScroll1(styles.navbarA)
             }
         };
         window.addEventListener('scroll', handleScroll);
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };
-    }, [scroll])
+    }, [scroll, scroll1])
     return (
         <nav className={`navbar navbar-expand-lg position-fixed w-100 ${scroll} ${styles.nav}`}>
             <div className={`container-fluid ${styles.navbar}`}>
@@ -31,16 +31,16 @@ function Navbar() {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className={`navbar-nav ms-auto mb-2 mb-lg-0 ${styles.navbarUl}`}>
                             <li className="nav-item">
-                                <a className={`${styles.navbarA} nav-link fw-bold ${scroll1}`} href="#">Home</a>
+                                <a className={`nav-link fw-bold ${scroll1}`} href="#">Home</a>
                             </li>
                             <li className="nav-item">
-                                <a className={`${styles.navbarA} nav-link fw-bold ${scroll1}`} href="#">About</a>
+                                <a className={`nav-link fw-bold ${scroll1}`} href="#">About</a>
                             </li>
                             <li className="nav-item">
-                                <a className={`${styles.navbarA} nav-link fw-bold ${scroll1}`} href="#">Division</a>
+                                <a className={`nav-link fw-bold ${scroll1}`} href="#">Division</a>
                             </li>
                             <li className="nav-item">
-                                <a className={`${styles.navbarA} nav-link fw-bold ${scroll1}`} href="#">Achievement</a>
+                                <a className={`nav-link fw-bold ${scroll1}`} href="#">Achievement</a>
                             </li>
                         </ul>
                     </div>
