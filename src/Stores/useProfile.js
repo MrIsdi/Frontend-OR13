@@ -44,7 +44,7 @@ const useProfile = create((set, get)=>({
                 title: "Success",
                 text: "Anda berhasil tambah profile",
                 icon: "success",
-                timer: 1000,
+                timer: 2000,
                 showConfirmButton: false
             })
         })
@@ -54,7 +54,7 @@ const useProfile = create((set, get)=>({
                 title: "Failed",
                 text: "Anda gagal tambah profile",
                 icon: "error",
-                timer: 1000,
+                timer: 2000,
                 showConfirmButton: false
             })
         })
@@ -75,7 +75,7 @@ const useProfile = create((set, get)=>({
                 title: "Success",
                 text: "Anda berhasil update profile",
                 icon: "success",
-                timer: 1000,
+                timer: 2000,
                 showConfirmButton: false
             })
         })
@@ -85,7 +85,7 @@ const useProfile = create((set, get)=>({
                 title: "Failed",
                 text: "Anda gagal update profile",
                 icon: "error",
-                timer: 1000,
+                timer: 2000,
                 showConfirmButton: false
             })
         })
@@ -104,7 +104,7 @@ const useProfile = create((set, get)=>({
                 title: "Success",
                 text: "Anda berhasil tambah file",
                 icon: "success",
-                timer: 1000,
+                timer: 2000,
                 showConfirmButton: false
             })
         })
@@ -114,7 +114,7 @@ const useProfile = create((set, get)=>({
                 title: "Failed",
                 text: "Anda gagal tambah file",
                 icon: "error",
-                timer: 1000,
+                timer: 2000,
                 showConfirmButton: false
             })
         })

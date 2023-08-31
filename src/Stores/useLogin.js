@@ -28,12 +28,19 @@ const useLogin = create((set, get)=>({
                 title: "Success",
                 text: "Anda berhasil Log In",
                 icon: "success",
-                timer: 1000,
+                timer: 3000,
                 showConfirmButton: false
             })
         })
         .catch((error)=>{
             get().setValidation(error.response)
+            Swal.fire({
+                title: "Error",
+                text: "Email dan password yang digunakan salah",
+                icon: "error",
+                timer: 3000,
+                showConfirmButton: false
+            })
         })
     },
     handleLogout: async () =>{
@@ -63,12 +70,19 @@ const useLogin = create((set, get)=>({
                 title: "Success",
                 text: "Anda berhasil ganti password",
                 icon: "success",
-                timer: 1000,
+                timer: 3000,
                 showConfirmButton: false
             })
         })
         .catch((error) =>{
             get().setIsPassword(error)
+            Swal.fire({
+                title: "Gagal",
+                text: "Anda tidak berhasil ganti password",
+                icon: "warning",
+                timer: 3000,
+                showConfirmButton: false
+            })
         } )
     }
 }))

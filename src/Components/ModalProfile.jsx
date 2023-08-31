@@ -18,7 +18,7 @@ function ModalProfile() {
     const [alamat, setAlamat] = useState("")
     const [asal, setAsal] = useState("")
     const [hp, setHp] = useState("")
-    const [agama, setAgama] = useState("")
+    const [agama, setAgama] = useState("unknown")
     const [foto, setFoto] = useState("")
 
     const setProfile = useProfile(state => state.setProfile)
@@ -229,7 +229,7 @@ function ModalProfile() {
                     </div>
                 </div>
             </div>
-            <div className="row">
+            <div className="row d-none">
                 <div className="col-md-3">
                     <div className="mb-5">
                         <label htmlFor="agama" className="form-label fw-bold">Agama</label>

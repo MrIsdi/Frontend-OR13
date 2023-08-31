@@ -229,7 +229,7 @@ function ModalUpdateProfile() {
                     </div>
                 </div>
             </div>
-            <div className="row">
+            <div className="row d-none">
                 <div className="col-md-3">
                     <div className="mb-5">
                         <label htmlFor="agama" className="form-label fw-bold">Agama</label>

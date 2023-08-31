@@ -40,7 +40,7 @@ function Verify() {
                                 <a href={dataProfile["bukti_pembayaran"]} className={`w-50 mx-auto text-white btn d-flex align-items-center justify-content-center ${styles.profileBtn}`} target="_blank" download> Download</a>
                             </div>
                             <div className="row mt-5">
-                                <div className="col-3">
+                                <div className="col-md-3">
                                     <a href='/peserta/editverify' className={`d-flex align-items-center justify-content-center w-100 text-white btn ${styles.profileBtn}`}>Edit File</a>
                                 </div>
                             </div>

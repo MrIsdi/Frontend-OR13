@@ -71,9 +71,9 @@ function Dashboard() {
                                 <div className={`d-flex justify-content-around align-items-center py-3 rounded-4 ${styles.dashboardContact}`}>
                                     <i class="fs-4 fw-bold bi bi-whatsapp"></i>
                                     <div className={`d-flex flex-column`}>
-                                        <a href="https://wa.me/6282352293189" target="_blank" className='text-decoration-none'>
-                                            <p className="color-1 fs-6 mb-0 fw-bold">Kak Joan</p>
-                                            <p className="color-1 fs-6 mb-0">+62 823-5229-3189</p>
+                                        <a href="https://wa.me/6285769658744" target="_blank" className='text-decoration-none'>
+                                            <p className="color-1 fs-6 mb-0 fw-bold">Kak Aina</p>
+                                            <p className="color-1 fs-6 mb-0">+62 857-6965-8744</p>
                                         </a>
                                     </div>
                                 </div>

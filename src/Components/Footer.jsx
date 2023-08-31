@@ -46,7 +46,7 @@ function Footer() {
                     <div className="col-md-6 offset-md-3" data-aos="fade-up-left">
                         <div className={`${styles.footerContact}`}>
                             <p className="fs-6 text-white fw-bold">Kontak</p>
-                            <p className="fs-6 text-white">+62 823-5229-3189</p>
+                            <p className="fs-6 text-white">Kak Aina (+62 857-6965-8744)</p>
                         </div>
                         <div className={`${styles.footerRelate}`}>
                             <p className="fs-6 text-white fw-bold">Relate</p>
