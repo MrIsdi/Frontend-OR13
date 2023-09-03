@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
-@import url('http://fonts.cdnfonts.com/css/helvetica-neue-9');   
+@import url('https://fonts.cdnfonts.com/css/helvetica-neue-9');   
 
 .font{
     font-family: 'Inter', sans-serif;
@@ -55,7 +55,7 @@
 }
 .navbarLogo{
     height: 48px;
-    mix-blend-mode: color-burn;
+    /* mix-blend-mode: color-burn; */
 }
 .navbarUl{
     gap: 4rem;
@@ -69,7 +69,7 @@
     color: #301D54 !important;
 }
 .navbarA{
-    color: #fff !important;
+    color: rgba(0, 0, 0, .5) !important;
 }
 @media screen and (max-width: 992px){
     .nav{
@@ -92,7 +92,7 @@
 .homeBg{
     container-type: inline-size;
     container-name: home;
-    background: linear-gradient(90deg, #ffffff 50%,#301D54 50%);
+    /* background: linear-gradient(90deg, #ffffff 50%,#301D54 50%); */
 }
 @media screen and (max-width: 768px){
     .homeBg{
@@ -151,7 +151,7 @@
 .divisionLogo{
     width: 101px;
     height: 101px;
-    background: #BBBBBB;
+    /* background: #BBBBBB; */
     border-radius: 50%;
 }
 .subdivisionFill{
@@ -200,7 +200,7 @@
 }
 .achieveBox{
     display: flex;
-    width: 496px;
+    /* width: 496px; */
     height: 94px;
     background: #F9F4FF;
     border-radius: 15px;
@@ -222,7 +222,7 @@
     }
 }
 .persuade{
-    background: #F8CBDF;
+    background: url("../assets/bg.png");
 }
 .persuadeTitle{
     color: #301D54;
@@ -241,8 +241,8 @@
 .footerLogo{
     width: 87px;
     height: 87px;
-    background: #6C6C6C;
-    border-radius: 50%;
+    /* background: #6C6C6C;
+    border-radius: 50%; */
 }
 .footerSosmeds{
     display: flex;
@@ -251,9 +251,11 @@
 .footerSosmed{
     width: 40px;
     height: 40px;
-    background: #B3B3B3;
+    background: #fff;
     border-radius: 50%;
     margin-bottom: 2rem;
+    display: grid;
+    place-items: center;
 }
 
 /* Dashboard */

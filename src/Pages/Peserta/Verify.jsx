@@ -27,17 +27,22 @@ function Verify() {
                         </div>
                     </div>
                     {
-                        (dataProfile["krs"] === "http://localhost:8000/storage/krs" && dataProfile["bukti_pembayaran"] === "http://localhost:8000/storage/pembayaran")?
+                        (dataProfile["krs"] === "https://or-api.neotelemetri.com/storage/krs" && dataProfile["bukti_pembayaran"] === "https://or-api.neotelemetri.com/storage/pembayaran")?
                         <FileVerify />:
                         <div className="row mt-5">
                             <p className="fs-4 fw-bold">Berkas anda</p>
                             <div className="col-md-5">
-                                <img src={dataProfile["krs"]} className="img-thumbnail" alt="" />
+                                <img src={dataProfile["krs"]} className="img-thumbnail mx-auto d-block" alt="" />
                                 <a href={dataProfile["krs"]} className={`w-50 mx-auto text-white btn d-flex align-items-center justify-content-center ${styles.profileBtn}`} target="_blank" download> Download</a>
                             </div>
                             <div className="col-md-5">
-                                <img src={dataProfile["bukti_pembayaran"]} className="img-thumbnail" alt="" />
+                                <img src={dataProfile["bukti_pembayaran"]} className="img-thumbnail mx-auto d-block" alt="" />
                                 <a href={dataProfile["bukti_pembayaran"]} className={`w-50 mx-auto text-white btn d-flex align-items-center justify-content-center ${styles.profileBtn}`} target="_blank" download> Download</a>
+                            </div>
+                            <div className="row mt-5">
+                                <div className="col-md-3">
+                                    <a href='/peserta/editverify' className={`d-flex align-items-center justify-content-center w-100 text-white btn ${styles.profileBtn}`}>Edit File</a>
+                                </div>
                             </div>
                         </div>
                     }

@@ -32,7 +32,7 @@ function Register() {
                 setVal(true)
             }
         }
-    }, [])
+    }, [validation])
 
     return (
         <div className="container-fluid">
@@ -61,7 +61,7 @@ function Register() {
                         <a href="/login" className="text-dark fw-bold text-decoration-none"> Masuk</a>
                     </p>
                 </div>
-                <div className="col-md-6 offset-md-1">
+                <div className="col-md-6 offset-md-1 d-md-block d-none">
                     <img className={styles.imageReg} src={bg} alt="" />
                 </div>
             </div>

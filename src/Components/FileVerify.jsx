@@ -9,6 +9,7 @@ function FileVerify() {
     const [bukti, setBukti] = useState(null)
     const navigate = useNavigate()
     const setData = useProfile(state => state.setData)
+    const show = useProfile(state => state.show)
     const storeFile = useProfile(state => state.storeFile)
 
     const startFile = async (e) => {
@@ -18,7 +19,10 @@ function FileVerify() {
         dataFile.append("bukti_pembayaran", bukti)
         setData(dataFile)
         storeFile()
-        navigate(0)
+        show()
+        setTimeout(() => {
+            navigate("/peserta")
+        }, 1000);
     }
     return (
         <div className="row mt-5">
