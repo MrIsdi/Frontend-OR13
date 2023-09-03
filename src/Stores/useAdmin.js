@@ -67,7 +67,7 @@ const useAdmin = create((set, get)=>({
                 }
             })
             .then((res) => {
-                console.log(res.data.data)
+                // console.log(res.data.data)
                 get().setLoading(false)
                 get().setData(res.data.data)
                 // get().currentPage

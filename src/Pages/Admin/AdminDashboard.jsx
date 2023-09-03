@@ -60,6 +60,26 @@ function AdminDashboard() {
         setCurrentPage(page);
     };
 
+    const checkImageInvoice = (params) => {
+        let invoiceURL =  params.substring(params.lastIndexOf('/') + 1)
+        let check
+        // console.log(invoiceURL)
+        if (invoiceURL === 'pembayaran') {
+            return 'Belum Ada'
+        } else {
+            return 'Lihat'
+        }
+    }
+
+    const checkImageKRS = (params) => {
+        let krsURL = params.substring(params.lastIndexOf('/') + 1)
+        if (krsURL === 'krs') {
+            return 'Belum Ada'
+        } else {
+            return 'Lihat'
+        }
+    }
+
     return (
         <div className="container-fluid">
             <div className="row flex-nowrap">
@@ -178,6 +198,7 @@ function AdminDashboard() {
                                                     checked={res.validation_status == 1 ? true : false}
                                                     value={res.id}
                                                     onChange={handleValidationStatus}
+                                                    style={{ width: "20px", height: "20px" }}
                                                     />
                                                 </div>
 
@@ -196,6 +217,7 @@ function AdminDashboard() {
                                                     checked={res.status_aktif == 1 ? true : false}
                                                     value={res.id}
                                                     onChange={handleMemberStatus}
+                                                    style={{ width: "20px", height: "20px" }}
                                                     />
                                                 </div>
                                                 {/* <button type='button' className="btn btn-primary" onClick={handleMemberStatus} value={res.id}>
@@ -206,18 +228,38 @@ function AdminDashboard() {
                                             </td>
                                             <td>
                                                 <div className="d-flex justify-content-center">
-                                                    <button type="button" className="btn btn-primary" onClick={handleKrsFile} value={res.id} variant="outline-dark">
+                                                    <button type="button"
+                                                    className="btn btn-primary"
+                                                    onClick={handleKrsFile}
+                                                    value={res.id}
+                                                    variant="outline-dark"
+                                                    disabled={checkImageKRS(res.krs) === "Belum Ada" ? true : false}
+                                                    style={{ 
+                                                        width: "110px",
+                                                        backgroundColor: checkImageKRS(res.krs) === "Belum Ada" ? "#E5D6F6" : "#301D54",
+                                                        color: checkImageKRS(res.krs) === "Belum Ada" ? "#301D54" : "#ffffff"
+                                                     }}>
                                                         {
-                                                            res.krs ? "Lihat" : "Belum Ada"
+                                                            checkImageKRS(res.krs)
                                                         }
                                                     </button>
                                                 </div>
                                             </td>
                                             <td>
                                                 <div className="d-flex justify-content-center">
-                                                    <button type='button' className="btn btn-primary" onClick={handleInvoiceFile} value={res.id} variant="outline-dark">
+                                                    <button type='button'
+                                                    className="btn btn-primary"
+                                                    onClick={handleInvoiceFile}
+                                                    value={res.id}
+                                                    variant="outline-dark"
+                                                    disabled={checkImageInvoice(res.bukti_pembayaran) === "Belum Ada" ? true : false}
+                                                    style={{ 
+                                                        width: "110px",
+                                                        backgroundColor: checkImageInvoice(res.bukti_pembayaran) === "Belum Ada" ? "#E5D6F6" : "#301D54",
+                                                        color: checkImageInvoice(res.bukti_pembayaran) === "Belum Ada" ? "#301D54" : "#ffffff"
+                                                     }}>
                                                         {
-                                                            res.bukti_pembayaran ? "Lihat" : "Belum Ada"
+                                                            checkImageInvoice(res.bukti_pembayaran)
                                                         }
                                                     </button>
                                                 </div>
