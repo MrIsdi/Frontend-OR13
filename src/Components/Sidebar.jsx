@@ -66,6 +66,12 @@ function Sidebar() {
                                     <span className="ms-md-4 d-none d-sm-inline">Verify</span> 
                                 </a>
                             </li>
+                            <li className={`nav-item w-100 ps-md-4 px-2 px-md-0 ${styles.sidebarLi}`}>
+                                <a href="/peserta/ujian" className={`a text-white nav-link px-0 align-middle ${styles.navLink}`}>
+                                    <i class="fs-4 bi bi-file-earmark-fill"></i>
+                                    <span className="ms-md-4 d-none d-sm-inline">Ujian Online</span> 
+                                </a>
+                            </li>
                         </ul>
                     ) : (
                         <ul className="nav nav-pills w-100 flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">

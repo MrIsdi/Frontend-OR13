@@ -6,8 +6,8 @@ import skj from "../assets/skj.png"
 import prog from "../assets/prog.png"
 function Division() {
     return (
-        <div className={`container-fluid vh-100 ${styles.division} d-flex align-items-center mb-5`}>
-            <div className="container">
+        <div className={`container-fluid ${styles.division} d-flex align-items-center my-5`} id="divisi">
+            <div className="container my-5">
                 <CarouselProvider
                     naturalSlideWidth={100}
                     naturalSlideHeight={40}
@@ -16,14 +16,14 @@ function Division() {
                 >
                     <Slider>
                         <Slide index={0} className={`${styles.divisionSlide}`}>
-                            <div className="row align-items-center mb-5">
+                            <div className="row align-items-center my-5">
                                 <div className="col-6">
                                     <p className={`fs-2 ${styles.divisionTitle}`}>Our Division</p>
                                     <p className={`fs-1 ${styles.divisionName}`}>Multimedia dan Desain</p>
                                 </div>
-                                <div className="col-6 d-flex justify-content-md-end justify-content-center">
+                                <div className="col-6 d-flex justify-content-end">
                                     <div className={`${styles.divisionLogo}`}>
-                                        <img src={mmd} alt="" className="fluid" />
+                                        <img src={mmd} alt="" className="img-thumbnail" style={{ background: "transparent", border: "none" }} />
                                     </div>
                                 </div>
                             </div>
@@ -49,14 +49,14 @@ function Division() {
                             </div>
                         </Slide>
                         <Slide index={1}>
-                            <div className="row align-items-center mb-5">
+                            <div className="row align-items-center my-5">
                                 <div className="col-6">
                                     <p className={`fs-2 ${styles.divisionTitle}`}>Our Division</p>
                                     <p className={`fs-1 ${styles.divisionName}`}>Programming</p>
                                 </div>
                                 <div className="col-6 d-flex justify-content-end ">
                                     <div className={`${styles.divisionLogo}`}>
-                                        <img src={prog} alt="" className="fluid" />
+                                        <img src={prog} alt="" className="img-thumbnail" style={{ background: "transparent", border: "none" }} />
                                     </div>
                                 </div>
                             </div>
@@ -82,14 +82,14 @@ function Division() {
                             </div>
                         </Slide>
                         <Slide index={2}>
-                            <div className="row align-items-center mb-5">
+                            <div className="row align-items-center my-5">
                                 <div className="col-6">
                                     <p className={`fs-2 ${styles.divisionTitle}`}>Our Division</p>
                                     <p className={`fs-1 ${styles.divisionName}`}>Sistem Komputer dan Jaringan</p>
                                 </div>
                                 <div className="col-6 d-flex justify-content-end ">
                                     <div className={`${styles.divisionLogo}`}>
-                                        <img src={skj} alt="" />
+                                        <img src={skj} alt="" className='img-thumbnail' style={{ background: "transparent", border: "none" }} />
                                     </div>
                                 </div>
                             </div>

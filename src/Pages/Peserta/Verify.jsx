@@ -6,9 +6,25 @@ import useProfile from '../../Stores/useProfile'
 import {useNavigate} from "react-router-dom"
 import DragDrop from '../../Components/DragDrop'
 import FileVerify from '../../Components/FileVerify'
+import Swal from 'sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css';
 
 function Verify() {
     const dataProfile = JSON.parse(Cookies.get("profile"))
+    const navigate = useNavigate()
+
+    if(Object.values(dataProfile).length == 0){
+        Swal.fire({
+            title: 'Kamu belum mengisi profil',
+            text: 'Silahkan isi terlebih dahulu profile kamu',
+            icon: 'warning',
+            showConfirmButton: false,
+            timer: 3000
+        });
+        setTimeout(()=>{
+            navigate("/peserta/profile")
+        }, 3000)
+    }
 
     return (
         <div className="container-fluid">

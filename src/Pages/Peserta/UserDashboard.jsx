@@ -40,6 +40,22 @@ function Dashboard() {
                             }
                         </div>
                     </div>
+                    {
+                        Object.values(dataProfile).length == 0? (
+                            <div className="row">
+                                <div className="col mb-3 d-flex align-items-center" style={{
+                                    borderRadius: "10px",
+                                    background: "#E5D6F6",
+                                    height: "50px"
+                                }}>
+                                    <p className='fs-6 fw-bold mb-0' style={{color: "#301D54"}}>
+                                        <i class="fs-5 bi bi-shield-fill-check mx-3"></i>
+                                        Sebelum melakukan verifikasi dokumen, silahkan terlebih dahulu isi profil
+                                    </p>
+                                </div>
+                            </div>
+                        ) : ""
+                    }
                     <div className="row">
                         <div className="col-md-4 mb-4 mb-md-0">
                             <div className={`d-flex flex-column mb-4 p-5 justify-content-center align-items-center rounded-5 ${styles.sidebarUser}`}>

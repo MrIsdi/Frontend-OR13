@@ -11,6 +11,7 @@ import UserDashboard from "./Pages/Peserta/UserDashboard"
 import Profile from "./Pages/Peserta/Profile"
 import Verify from "./Pages/Peserta/Verify"
 import EditVerify from './Pages/Peserta/EditVerify'
+import Exam from "./Pages/Peserta/Exam"
 
 import useLogin from './Stores/useLogin'
 import Test from './Pages/Admin/Test'
@@ -37,6 +38,7 @@ function App() {
         <Route path="/peserta/profile" element={ <Profile /> } />
         <Route path="/peserta/verify" element={ <Verify /> } />
         <Route path="/peserta/editverify" element={ <EditVerify /> } />
+        <Route path="/peserta/ujian" element={ <Exam /> } />
       </Routes>
     </BrowserRouter>
   )

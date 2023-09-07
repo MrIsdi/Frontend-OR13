@@ -8,7 +8,7 @@ function About() {
         AOS.init();
     },[])
     return (
-        <main className={`container-fluid ${styles.about}`}>
+        <main className={`container-fluid ${styles.about}`} id="about">
             <div className="container">
                 <div className="row vh-100 align-items-center">
                     <div className="col-md-6" data-aos="fade-down-right">

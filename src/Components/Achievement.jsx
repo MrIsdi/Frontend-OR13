@@ -13,8 +13,8 @@ function Achievement() {
         AOS.init();
     },[])
     return (
-        <main className={`container-fluid ${styles.achieve} mb-5`}>
-            <div className={`container ${styles.achieveContainer}`}>
+        <main className={`container-fluid ${styles.achieve} my-5`} id="achieve">
+            <div className={`container my-5 ${styles.achieveContainer}`}>
                 <div className="row">
                     <div className="col">
                         <p className={`fs-2 text-center ${styles.projectTitle} mt-5 mb-3`}>Our Achievement</p>

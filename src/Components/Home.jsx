@@ -20,10 +20,10 @@ function Home() {
         }
     }, [image])
     return (
-        <main className={`container-fluid vh-100 ${styles.homeBg}`}>
+        <main className={`container-fluid vh-100 ${styles.homeBg}`} id="home">
             <div className="container">
                 <div className="row">
-                    <div className="col-md-6 vh-100 d-flex flex-column justify-content-center" data-aos="fade-up-right">
+                    <div className="col-md-6 vh-100 d-flex flex-column justify-content-center" data-aos="fade-up-right" >
                         <div className="border-nam bottom-left bottom-right">
                             <p className="fs-1 fw-bold border-name top-left top-right bottom-left bottom-right" style={{
                                 border: "1px solid #FFA1C2"

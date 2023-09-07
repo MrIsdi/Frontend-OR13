@@ -55,9 +55,19 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-25%, -50%);
     width: 400px;
 }
 .color-1{
     color: #301D54;
+}
+.a-ujian{
+    border-radius: 10px;
+    border: 1px solid #301D54;
+    color: black;
+    text-decoration: none;
+}
+.a-ujian:hover{
+    background: #301D54;
+    color: #fff;
 }

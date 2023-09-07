@@ -31,16 +31,16 @@ function Navbar() {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className={`navbar-nav ms-auto mb-2 mb-lg-0 ${styles.navbarUl}`}>
                             <li className="nav-item">
-                                <a className={`nav-link fw-bold ${scroll1}`} href="#">Home</a>
+                                <a className={`nav-link fw-bold ${scroll1}`} href="#home">Home</a>
                             </li>
                             <li className="nav-item">
-                                <a className={`nav-link fw-bold ${scroll1}`} href="#">About</a>
+                                <a className={`nav-link fw-bold ${scroll1}`} href="#about">About</a>
                             </li>
                             <li className="nav-item">
-                                <a className={`nav-link fw-bold ${scroll1}`} href="#">Division</a>
+                                <a className={`nav-link fw-bold ${scroll1}`} href="#divisi">Division</a>
                             </li>
                             <li className="nav-item">
-                                <a className={`nav-link fw-bold ${scroll1}`} href="#">Achievement</a>
+                                <a className={`nav-link fw-bold ${scroll1}`} href="#achieve">Achievement</a>
                             </li>
                         </ul>
                     </div>
