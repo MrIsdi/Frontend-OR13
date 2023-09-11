@@ -1,6 +1,6 @@
 import {useState, useEffect} from "react"
 import styles from "../styles/styles.module.css"
-import bg from "../assets/Vector 3.png"
+// import bg from "../assets/Vector 3.png"
 import "../Styles/class.css"
 import male from "../assets/male.png"
 import female from "../assets/female.png"
@@ -43,7 +43,7 @@ function Home() {
                     </div>
                     <div className="col-md-6 d-none d-md-block" data-aos="fade-up-left">
                         <div className="avatar">
-                            <img src={bg} />
+                            {/* <img src={bg} /> */}
                             <img src={image} alt="" className="user" />
                         </div>
                     </div>

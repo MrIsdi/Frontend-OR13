@@ -10,7 +10,7 @@ function Division() {
             <div className="container my-5">
                 <CarouselProvider
                     naturalSlideWidth={100}
-                    naturalSlideHeight={40}
+                    naturalSlideHeight={50}
                     totalSlides={3}
                     isPlaying
                 >
@@ -93,14 +93,14 @@ function Division() {
                                     </div>
                                 </div>
                             </div>
-                            <div className="row">
-                                <div className="col-md-6">
+                            <div className="row justify-content-evenly">
+                                <div className="col-md-4">
                                     <p className="fs-2 text-white">Sistem Komputer</p>
                                     <p className={`fs-6 text-white ${styles.subdivisionFill}`}>
                                         Subdivisi yang bergerak dibidang sistem komputer dimana akan mempelajari bagaimana memastikan kelancaran operasi sistem , pemilharaan server dan penanganan akibat keamanan sistem komputer
                                     </p>
                                 </div>
-                                <div className="col-md-6">
+                                <div className="col-md-4">
                                     <p className="fs-2 text-white">Jaringan</p>
                                     <p className={`fs-6 text-white ${styles.subdivisionFill}`}>
                                         Subdivisi yang mempelajari bagaimana suatu jaringan komputer bekerja, merancang dan mengimplementasikan jaringan tersebut

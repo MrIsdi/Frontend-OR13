@@ -117,6 +117,7 @@ const useProfile = create((set, get)=>({
                 timer: 2000,
                 showConfirmButton: false
             })
+            console.log(error.response)
         })
     },
     showFile: () =>{

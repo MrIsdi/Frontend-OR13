@@ -65,6 +65,7 @@ function ModalProfile() {
         setProfile(dataFile)
         storeProfile()
     }
+    console.log(validation)
     
     const optionSubDivisi = {
         "MMD": ["UI/UX", "VE", "3D"],
