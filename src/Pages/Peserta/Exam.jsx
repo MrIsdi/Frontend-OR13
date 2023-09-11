@@ -15,10 +15,10 @@ function Exam() {
     const navigate = useNavigate()
 
     const data = [
-        { name: "Divisi Programming", logo: prog, link: `http://localhost:8000/ujian/aturan/2/${dataProfile["user_id"]}`, value: "Programming" },
-        { name: "Divisi Multimedia & Desain", logo: mmd, link: `http://localhost:8000/ujian/aturan/1/${dataProfile["user_id"]}`, value: "MMD" },
-        { name: "Divisi Sistem Komputer & Jaringan", logo: skj, link: `http://localhost:8000/ujian/aturan/3/${dataProfile["user_id"]}`, value: "SKJ" },
-        { name: "Organisasi", logo: logoor, link: `http://localhost:8000/ujian/aturan/4/${dataProfile["user_id"]}`, value: "Organisasi" },
+        { name: "Divisi Programming", logo: prog, link: `https://or-api.neotelemetri.com/ujian/aturan/2/${dataProfile["user_id"]}`, value: "Programming" },
+        { name: "Divisi Multimedia & Desain", logo: mmd, link: `https://or-api.neotelemetri.com/ujian/aturan/1/${dataProfile["user_id"]}`, value: "MMD" },
+        { name: "Divisi Sistem Komputer & Jaringan", logo: skj, link: `https://or-api.neotelemetri.com/ujian/aturan/3/${dataProfile["user_id"]}`, value: "SKJ" },
+        { name: "Organisasi", logo: logoor, link: `https://or-api.neotelemetri.com/ujian/aturan/4/${dataProfile["user_id"]}`, value: "Organisasi" },
     ]
 
     if(Object.values(dataProfile).length == 0){
