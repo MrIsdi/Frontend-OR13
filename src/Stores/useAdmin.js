@@ -362,6 +362,60 @@ const useAdmin = create((set, get)=>({
         })
         get().setImageFile("")
     },
+
+    handleMemberZona: (event) =>{
+        const memberZona = get().data.map((user, index) => {
+            if(user.id === parseInt((event.target.value).split(",")[0])){
+                Swal.fire({
+                    title: 'Apa anda yakin?',
+                    // text: 'You won\'t be able to revert this!',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#301D54',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Ya',
+                    cancelButtonText: 'Tidak',
+                })
+                .then((result) => {
+                    if(result.isConfirmed){
+                        const zona = (event.target.value).split(",")[1]
+                        axios.post(`https://or-api.neotelemetri.com/api/admin/status_zona/${user.id}`, {
+                            zona
+                        },
+                        {
+                            headers: {
+                                Accept: "application/json",
+                                "Content-Type": "application/json", 
+                                Authorization: `Bearer ${Cookies.get('token')}`,
+                                "role": "admin"
+                            }
+                        })
+                        .then((res) => {
+                            get().setFetchStatus(true)
+                            Swal.fire({
+                                title: 'Berhasil',
+                                text: 'Anda berhasil mengedit data!',
+                                icon: 'success',
+                                showCancelButton: false,
+                                confirmButtonColor: '#301D54',
+                            });
+                        })
+                        .catch((err) => {
+                            console.log(err)
+                            Swal.fire({
+                                title: 'Gagal',
+                                text: 'Anda gagal mengedit data!',
+                                icon: 'error',
+                                showCancelButton: false,
+                                confirmButtonColor: '#301D54',
+                            });
+                        })
+                    }
+                })
+            }
+            return user
+        })
+    }
 }))
 
 export default useAdmin

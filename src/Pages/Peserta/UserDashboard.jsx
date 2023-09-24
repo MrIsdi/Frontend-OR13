@@ -33,10 +33,26 @@ function Dashboard() {
                             }
                             !</p>
                         </div>
-                        <div className="col-6 d-flex flex-row-reverse">
+                        <div className="col-6 d-flex flex-row-reverse align-items-center">
                             {
                                 Object.values(dataProfile).length != 0? <img src={dataProfile["foto"]} className="rounded-circle border  border-dark" alt="" style={{ width: "50px", aspectRatio: "1/1", objectFit: "cover", objectPosition: "top" }} />:
                                 <i className="fw-bold bi bi-person-circle" style={{ fontSize: "40px" }}></i>
+                            }
+                            {
+                                Object.values(dataProfile).length != 0?
+                                <div className="zona me-3 d-flex align-items-center">
+                                    <p className='color-1 mb-0 fw-bold me-1'>Zona :</p>
+                                    <div style={{
+                                        width: "80px",
+                                        aspectRatio: "2/1"
+                                    }}
+                                    className={`rounded-3 
+                                    ${dataProfile["zona"] == "Hitam"? "bg-dark" : 
+                                    (dataProfile["zona"] == "Merah"? "bg-danger" : 
+                                    (dataProfile["zona"] == "Kuning"? "bg-warning" : 
+                                    (dataProfile["zona"] == "Hijau"? "bg-success" : "")))}`}
+                                    ></div>
+                                </div> : ""
                             }
                         </div>
                     </div>
@@ -45,16 +61,29 @@ function Dashboard() {
                             <div className="row">
                                 <div className="col mb-3 d-flex align-items-center" style={{
                                     borderRadius: "10px",
+                                    background: "#FBE4EC",
+                                    height: "50px"
+                                }}>
+                                    <p className='fs-6 fw-bold mb-0' style={{color: "#B966A3"}}>
+                                        <i class="fs-5 bi bi-exclamation-triangle-fill mx-3"></i>
+                                        Maaf, kamu belum terverifikasi silahkan lengkapi profile, bukti pembayaran & KRS
+                                    </p>
+                                </div>
+                            </div>
+                        ) : (
+                            <div className="row">
+                                <div className="col mb-3 d-flex align-items-center" style={{
+                                    borderRadius: "10px",
                                     background: "#E5D6F6",
                                     height: "50px"
                                 }}>
                                     <p className='fs-6 fw-bold mb-0' style={{color: "#301D54"}}>
                                         <i class="fs-5 bi bi-shield-fill-check mx-3"></i>
-                                        Sebelum melakukan verifikasi dokumen, silahkan terlebih dahulu isi profil
+                                        Selamat kamu sudah terverifikasi!
                                     </p>
                                 </div>
                             </div>
-                        ) : ""
+                        )
                     }
                     <div className="row">
                         <div className="col-md-4 mb-4 mb-md-0">

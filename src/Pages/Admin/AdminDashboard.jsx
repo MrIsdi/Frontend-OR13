@@ -19,6 +19,7 @@ function AdminDashboard() {
     const handleMemberStatus = useAdmin(state => state.handleMemberStatus)
     const handleKrsFile = useAdmin(state => state.handleKrsFile)
     const handleInvoiceFile = useAdmin(state => state.handleInvoiceFile)
+    const handleMemberZona = useAdmin(state => state.handleMemberZona)
     const search = useAdmin(state => state.search)
     const message = useAdmin(state => state.message)
     const handleSearch = useAdmin(state => state.handleSearch)
@@ -79,6 +80,8 @@ function AdminDashboard() {
             return 'Lihat'
         }
     }
+
+    const [zona, setZona] = useState("")
 
     return (
         <div className="container-fluid">
@@ -169,6 +172,7 @@ function AdminDashboard() {
                                 <th>Subdivisi</th>
                                 <th className='text-center'>Verifikasi</th>
                                 <th className='text-center'>Status Peserta</th>
+                                <th className='text-center'>Zona</th>
                                 <th className='text-center'>Bukti KRS</th>
                                 <th className='text-center'>Bukti Pembayaran</th>
                             </tr>
@@ -225,6 +229,63 @@ function AdminDashboard() {
                                                         res.status_aktif == 1 ? "Aktif" : "Tidak Aktif"
                                                     }
                                                 </button> */}
+                                            </td>
+                                            <td>
+                                                <div className="d-flex justify-content-center position-relative">
+                                                    <button 
+                                                        className={`btn border w-100 
+                                                            ${res.zona == "Hitam"? "bg-dark" : 
+                                                            (res.zona == "Merah"? "bg-danger" : 
+                                                            (res.zona == "Kuning"? "bg-warning" : 
+                                                            (res.zona == "Hijau"? "bg-success" : "")))}`} 
+                                                        style={{ aspectRatio: "1/1", cursor: "pointer" }}
+                                                        onClick={()=>{
+                                                            const div = document.getElementById(`${res.id}`)
+                                                            div.classList.remove("d-none")
+                                                        }}></button>
+                                                    <div 
+                                                        className="position-absolute d-none" id={res.id}
+                                                        onChange={handleMemberZona}
+                                                        style={{
+                                                            top: "100%",
+                                                            width: "300px",
+                                                            background: "#fff",
+                                                            padding: "1rem",
+                                                            display: "flex",
+                                                            justifyContent: "space-evenly",
+                                                            borderRadius: "1rem",
+                                                            zIndex: 1,
+                                                        }}>
+                                                        <label htmlFor="">
+                                                            <input type="radio" name="zona" onClick={()=>{
+                                                                const div = document.getElementById(`${res.id}`)
+                                                                div.classList.add("d-none")
+                                                            }} id="" value={`${res.id},Hitam`} />
+                                                            <span>Hitam</span>
+                                                        </label>
+                                                        <label htmlFor="">
+                                                            <input type="radio" name="zona" onClick={()=>{
+                                                                const div = document.getElementById(`${res.id}`)
+                                                                div.classList.add("d-none")
+                                                            }} id="" value={`${res.id},Merah`} />
+                                                            <span>Merah</span>
+                                                        </label>
+                                                        <label htmlFor="">
+                                                            <input type="radio" name="zona" onClick={()=>{
+                                                                const div = document.getElementById(`${res.id}`)
+                                                                div.classList.add("d-none")
+                                                            }} id="" value={`${res.id},Kuning`} />
+                                                            <span>Kuning</span>
+                                                        </label>
+                                                        <label htmlFor="">
+                                                            <input type="radio" name="zona" onClick={()=>{
+                                                                const div = document.getElementById(`${res.id}`)
+                                                                div.classList.add("d-none")
+                                                            }} id="" value={`${res.id},Hijau`} />
+                                                            <span>Hijau</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
                                             </td>
                                             <td>
                                                 <div className="d-flex justify-content-center">
